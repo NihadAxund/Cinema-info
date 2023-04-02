@@ -1,0 +1,287 @@
+* {
+    margin: 0 ;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(21, 21, 25);
+}
+
+header {
+    background-color: rgb(41, 42, 46) !important;
+    width: 100%;
+    height: 8vh;
+}
+
+#Sec-1 {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+#Sec-2 {
+    height: 100%;
+    width: 55%;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#Logo {
+    background-image: url(image/crakle.png);
+    width: 130px;
+    margin-left: 20px;
+    margin-right: 35px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#Sec-1>button {
+    border: 0 !important;
+    margin-left: 10px;
+}
+
+#Sec-1>button>i {
+    margin-right: 5px;
+}
+
+#Sec-1>button>strong {
+    margin: 100px !important;
+}
+
+.btn-outline-warning {
+    border-color: rgb(82, 82, 82) !important;
+    color: rgb(254, 115, 0) !important;
+    border-width: 2px;
+    padding: 5px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+#Sec-2>.btn-warning {
+    background-color: rgb(254, 115, 0);
+    border-color: rgb(254, 115, 0);
+    font-weight: bold;
+}
+
+
+
+.searchBox {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 40px;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.searchBox:hover {
+    background: #2f3640;
+}
+
+.searchBox:hover>.searchInput {
+    width: 240px;
+    background: #2f3640;
+    padding: 0 6px;
+}
+
+.searchBox:hover>.searchButton {
+    background: white;
+    border-radius: 20px;
+    color: #2f3640;
+}
+
+.searchButton {
+    color: white;
+
+    padding: 10px;
+    width: auto;
+    height: 40px;
+    background: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+
+}
+
+
+.Section-2 {
+    width: 100%;
+    height: 92vh;
+    display: flex;
+
+}
+
+.Movies_name {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    position: relative;
+    align-items: center;
+
+}
+
+.Names_Move {
+    width: 20%;
+    height: 90%;
+    margin: 10px;
+    position: fixed;
+    left: 10px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden
+}
+
+.Movies {
+    width: 80%;
+    height: 100%;
+}
+
+.Movies >.Movies_Sec1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Movie_img{
+    
+    width: 200px;
+    margin: 10px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 250px;
+    overflow: hidden;
+}
+.Movie_img:hover>.Movie_Info{
+    display: flex;
+}
+.PageAdd{
+
+    height: 200px;
+    width: 60%;
+    height: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    background-color: rgb(254, 115, 0);
+}
+.Movie_Info{
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100%;
+    background-color: rgba(254, 114, 0, 0.826);
+
+}
+
+.Movie_Info>.Info_Name{
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+    width: 100%;
+    height: 25%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.Info_Plot{
+
+    width: 100%;
+    height: 80%;
+    word-wrap: break-word;
+    text-align: center;
+    font-size: 10px;
+  
+    overflow: scroll;
+    display: flex;
+    align-items: end;
+ 
+}
+.Info_Plot>p{
+    word-wrap: break-word;
+    font-style:italic;
+    width: 100%;
+}
+
+.Names_Move>.Base {
+    margin-top: 15px;
+    color: rgb(255, 238, 219);
+    font-weight: bold;
+}
+
+.Names_Move>p {
+    margin: 0;
+    color: rgb(255, 238, 219);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all;
+    transition-duration: 2s;
+}
+
+.Names_Move>p:hover {
+    margin: 5px;
+    text-shadow: 2px 2px #eaecbe;
+    font-weight: bold;
+    transition: all;
+    transition-duration: 0.5s;
+}
+
+hr{
+    background-color: #ffffff;
+    opacity: 65%;
+    margin: 0;
+    border-radius: 20px;
+    height: 5px;
+    width: 20%;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: #ffffff;
+}
