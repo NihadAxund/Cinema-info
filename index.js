@@ -4,12 +4,21 @@ let section = document.querySelector(".Movies_Sec1")
 var url = `https://api.themoviedb.org/3/movie/popular?api_key=0110ed33ece90cf6ff112ff2f4a83241`;
 var contentBase = section.innerHTML;
 let content = "";
+let TotalPages = 1
 async function GetMovies(url) {
-    url += `&page=${pages}`
-    //alert(url)
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    const top10Movies = jsonData.results;
+    if (pages>1) {
+        url += `&page=${pages}`
+        var response = await fetch(url);
+        var jsonData = await response.json();
+        var top10Movies = jsonData.results;
+        
+    }
+    else{
+        var response = await fetch(url);
+        var jsonData = await response.json();
+        var top10Movies = jsonData.results;
+        TotalPages = jsonData.total_pages;
+    }
     top10Movies.forEach(element => {
         content += `<div class="Movie_img" style="background-image:url(https://image.tmdb.org/t/p/w500/${element.poster_path});">
         <div class="Movie_Info">
@@ -84,7 +93,9 @@ function Search() {
 }
 
 function Add_Page(event) {
-    pages++
-    //alert(pages)
-    GetMovies(url);
+    if(TotalPages-1>pages){
+        pages++
+        //alert(pages)
+        GetMovies(url);
+    }
 }
