@@ -5,6 +5,7 @@ var url = `https://api.themoviedb.org/3/movie/popular?api_key=0110ed33ece90cf6ff
 var contentBase = section.innerHTML;
 let content = "";
 let TotalPages = 1
+let modal = document.querySelector('.modal')
 async function GetMovies(url) {
     if (pages>1) {
         url += `&page=${pages}`
@@ -21,17 +22,13 @@ async function GetMovies(url) {
     }
     top10Movies.forEach(element => {
         content += `<div class="Movie_img" style="background-image:url(https://image.tmdb.org/t/p/w500/${element.poster_path});">
-        <div class="Movie_Info">
+        <div class="Movie_Info" id = ${element.id} onclick="Movie_Click(event)">
         <p class="Info_Name">${element.original_title}</p>
         <div class="Info_Plot">
             <p>${element.overview}</p>
         </div>
     </div> </div>`
     });
-    // Button
-    // content += `                <div class="PageAdd d-flex justify-content-center align-items-center" onclick="Add_Page(event)">
-    // <i class="fa-solid fa-plus fa-beat-fade" style="font-size: 80px;"></i>
-    // </div>`
     //Pagess
     content += `<div class="PageNumber d-flex justify-content-center align-items-center flex-column" style="width: 100%; ">
         <hr>
@@ -63,6 +60,11 @@ async function GetMoviesNameList() {
 
 GetMoviesNameList()
 ////////////////////////////////////
+var sectionA = document.querySelectorAll(".Actor");
+var sectionB = document.querySelector(".Img_List")
+var isDragging = false;
+var isokay = false
+var IsOk = true;
 
 function Click(event) {
     let ID = event.target;
@@ -79,6 +81,9 @@ function Click(event) {
 
 }
 
+function Movie_Info(id){
+    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+}
 
 function Search() {
     pages = 1
@@ -86,7 +91,6 @@ function Search() {
     let item = document.querySelector('.searchInput')
     let query = item.value;
     if (query.length > 2) {
-
         url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}&page=${pages}`
         GetMovies(url);
     }
@@ -99,3 +103,14 @@ function Add_Page(event) {
         GetMovies(url);
     }
 }
+
+function Back_Click(){
+    modal.style.display = "none"
+}
+
+function Movie_Click(event){
+    modal.style.display = "flex"
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

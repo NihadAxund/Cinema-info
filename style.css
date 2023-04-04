@@ -1,5 +1,5 @@
 * {
-    margin: 0 ;
+    margin: 0;
     padding: 0;
 }
 
@@ -156,7 +156,7 @@ nav {
     height: 90%;
     margin: 10px;
     position: fixed;
-    left: 10px;
+    left: 3%;
     background-color: rgb(40, 40, 40);
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.16);
@@ -171,14 +171,14 @@ nav {
     height: 100%;
 }
 
-.Movies >.Movies_Sec1{
+.Movies>.Movies_Sec1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.Movie_img{
-    
+.Movie_img {
+
     width: 200px;
     margin: 10px;
     background-size: cover;
@@ -187,10 +187,12 @@ nav {
     height: 250px;
     overflow: hidden;
 }
-.Movie_img:hover>.Movie_Info{
+
+.Movie_img:hover>.Movie_Info {
     display: flex;
 }
-.PageAdd{
+
+.PageAdd {
 
     height: 200px;
     width: 60%;
@@ -200,9 +202,11 @@ nav {
     overflow: hidden;
     background-color: rgb(254, 115, 0);
 }
-.Movie_Info{
+
+.Movie_Info {
     width: 100%;
     height: 100%;
+    cursor: pointer;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -211,31 +215,32 @@ nav {
 
 }
 
-.Movie_Info>.Info_Name{
+.Movie_Info>.Info_Name {
     font-weight: bold;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     width: 100%;
     height: 25%;
     word-wrap: break-word;
     text-align: center;
 }
 
-.Info_Plot{
+.Info_Plot {
 
     width: 100%;
     height: 80%;
     word-wrap: break-word;
     text-align: center;
     font-size: 10px;
-  
+
     overflow: scroll;
     display: flex;
     align-items: end;
- 
+
 }
-.Info_Plot>p{
+
+.Info_Plot>p {
     word-wrap: break-word;
-    font-style:italic;
+    font-style: italic;
     width: 100%;
 }
 
@@ -262,7 +267,7 @@ nav {
     transition-duration: 0.5s;
 }
 
-hr{
+hr {
     background-color: #ffffff;
     opacity: 65%;
     margin: 0;
@@ -270,6 +275,61 @@ hr{
     height: 5px;
     width: 20%;
 }
+
+.modal {
+    display: flex;
+    position: fixed;
+
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+
+
+.modal-content {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.884), rgba(0, 0, 0, 0.884), rgba(47, 18, 1, 0.874));
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    opacity: 98%;
+    box-shadow: -1px -1px 5px 1px rgb(255, 115, 0), 1px 1px 5px 1px rgb(255, 42, 0);
+    width: 80%;
+    height: 90%;
+    overflow: hidden;
+}
+
+.modal-content>.Modal_Header {
+    width: 100%;
+    height: 13%;
+    background-color: antiquewhite;
+}
+
+.modal-content>.Modal_Body {
+    width: 100%;
+    height: 57%;
+    background-color: #016bff;
+}
+
+.modal-content>.Modal_footer {
+    width: 100%;
+    height: 30%;
+    background-color: #01ff4d;
+}
+
+.Modal_Header>button {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    background-image: url(image/back.png);
+    background-size: cover;
+    border: 0;
+    background-color: transparent;
+}
+
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -284,4 +344,61 @@ hr{
 ::-webkit-scrollbar-thumb {
     border-radius: 100px;
     background: #ffffff;
+}
+
+
+
+
+.Actor {
+    width: 150px;
+    height: 90%;
+    margin: auto;
+    background-color: rgb(33, 33, 33);
+    background-size: cover;
+    background-position: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.imgitem {
+    width: 100%;
+    height: 75%;
+    margin: auto;
+
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.Actor>.Actor_Name {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Actor_Name>p {
+    width: 100%;
+    font-style: italic;
+    height: auto;
+    word-wrap: break-word;
+    font-size: 17px;
+}
+
+
+
+.Img_List {
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: auto;
+    flex-basis: 500px;
+
 }
