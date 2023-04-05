@@ -7,22 +7,23 @@ let content = "";
 let TotalPages = 1
 let modal = document.querySelector('.modal')
 async function GetMovies(url) {
-    if (pages>1) {
+    if (pages > 1) {
         url += `&page=${pages}`
         var response = await fetch(url);
         var jsonData = await response.json();
         var top10Movies = jsonData.results;
-        
+
     }
-    else{
+    else {
         var response = await fetch(url);
         var jsonData = await response.json();
         var top10Movies = jsonData.results;
         TotalPages = jsonData.total_pages;
     }
     top10Movies.forEach(element => {
+
         content += `<div class="Movie_img" style="background-image:url(https://image.tmdb.org/t/p/w500/${element.poster_path});">
-        <div class="Movie_Info" id = ${element.id} onclick="Movie_Click(event)">
+        <div class="Movie_Info" id = ${element.id} onclick="Movie_Click(id)">
         <p class="Info_Name">${element.original_title}</p>
         <div class="Info_Plot">
             <p>${element.overview}</p>
@@ -59,13 +60,6 @@ async function GetMoviesNameList() {
 }
 
 GetMoviesNameList()
-////////////////////////////////////
-var sectionA = document.querySelectorAll(".Actor");
-var sectionB = document.querySelector(".Img_List")
-var isDragging = false;
-var isokay = false
-var IsOk = true;
-
 function Click(event) {
     let ID = event.target;
     pages = 1
@@ -80,8 +74,10 @@ function Click(event) {
     }
 
 }
+////////////////////////////////////
 
-function Movie_Info(id){
+
+function Movie_Info(id) {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
 }
 
@@ -97,20 +93,115 @@ function Search() {
 }
 
 function Add_Page(event) {
-    if(TotalPages-1>pages){
+    if (TotalPages - 1 > pages) {
         pages++
         //alert(pages)
         GetMovies(url);
     }
 }
 
-function Back_Click(){
+function Back_Click() {
     modal.style.display = "none"
 }
 
-function Movie_Click(event){
+async function ActorInfo(id) {
+    let url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`;
+    let Sourcecode = ''
+    await fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const cast = data.cast;
+            for (let i = 0; i < cast.length; i++) {
+                if (cast[i].profile_path == null) {
+                    Sourcecode += `                    <div class="Actor">
+                    <div class="imgitem" style="background-image:url(image/anonim.jpg) ;"></div>
+                    <div class="Actor_Name">
+                        <p style="color: aliceblue;">${cast[i].name}</p>
+                    </div>
+                </div>`
+                }
+                else {
+                    Sourcecode += `                    <div class="Actor">
+                    <div class="imgitem" style="background-image:url(https://image.tmdb.org/t/p/w185/${cast[i].profile_path}) ;"></div>
+                    <div class="Actor_Name">
+                        <p style="color: aliceblue;">${cast[i].name}</p>
+                    </div>
+                </div>`
+                }
+            }
+            sectionB.innerHTML = Sourcecode;
+            AddImgItem();
+
+        });
+}
+
+function Movie_Click(event) {
+
+    //alert(event)
+    ActorInfo(event)
     modal.style.display = "flex"
+
+
+
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var sectionB = document.querySelector(".Img_List")
+
+
+function AddImgItem() {
+    var isDragging = false;
+    var isokay = false
+    var IsOk = true;
+    var sectionA = document.querySelectorAll(".Actor");
+    sectionB.addEventListener('mouseleave', (event) => {
+        const newPosition = {
+            x: event.clientX,
+            y: event.clientY
+        };
+        isDragging = false;
+        lastPosition = newPosition;
+    });
+    let lastPosition = null;
+    sectionA.forEach(element => {
+        element.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            lastPosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        });
+
+        element.addEventListener('mousemove', (event) => {
+            if (isDragging === true) {
+                const newPosition = {
+                    x: event.clientX,
+                    y: event.clientY
+                };
+                const delta = {
+                    x: newPosition.x - lastPosition.x,
+                    y: newPosition.y - lastPosition.y
+                };
+                sectionB.scrollLeft -= delta.x;
+                lastPosition = newPosition;
+            }
+        });
+
+        element.addEventListener('mouseup', (event) => {
+            const newPosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+            isDragging = false;
+            lastPosition = newPosition;
+        });
+    });
+
+}
+
+
+
+
 
