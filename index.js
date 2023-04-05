@@ -139,10 +139,12 @@ async function ActorInfo(id) {
 function Movie_About(id) {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
     let value = document.querySelector('.Movie_Image')
+    let value2 = document.querySelector(".Movie_Overview")
     fetch(url)
         .then(response => response.json())
         .then(data => {
             value.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${data.poster_path})`
+            value2.innerHTML = data.overview
         })
         .catch(error => console.error(error));
 }
