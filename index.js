@@ -102,6 +102,7 @@ function Add_Page(event) {
 
 function Back_Click() {
     modal.style.display = "none"
+    sectionB.innerHTML = '';
 }
 
 async function ActorInfo(id) {
@@ -135,9 +136,20 @@ async function ActorInfo(id) {
         });
 }
 
+function Movie_About(id) {
+    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+    let value = document.querySelector('.Movie_Image')
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            value.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${data.poster_path})`
+        })
+        .catch(error => console.error(error));
+}
+
 function Movie_Click(event) {
 
-    //alert(event)
+    Movie_About(event)
     ActorInfo(event)
     modal.style.display = "flex"
 
