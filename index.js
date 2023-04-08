@@ -114,7 +114,7 @@ async function ActorInfo(id) {
             const cast = data.cast;
             for (let i = 0; i < cast.length; i++) {
                 if (cast[i].profile_path == null) {
-                    Sourcecode += `                    <div class="Actor">
+                    Sourcecode += `<div class="Actor animate__animated animate__bounceInRight animate__delay-2s">
                     <div class="imgitem" style="background-image:url(image/anonim.jpg) ;"></div>
                     <div class="Actor_Name">
                         <p style="color: aliceblue;">${cast[i].name}</p>
@@ -122,7 +122,7 @@ async function ActorInfo(id) {
                 </div>`
                 }
                 else {
-                    Sourcecode += `                    <div class="Actor">
+                    Sourcecode += `<div class="Actor animate__animated animate__bounceInRight">
                     <div class="imgitem" style="background-image:url(https://image.tmdb.org/t/p/w185/${cast[i].profile_path}) ;"></div>
                     <div class="Actor_Name">
                         <p style="color: aliceblue;">${cast[i].name}</p>
